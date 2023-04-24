@@ -7,10 +7,21 @@ import Project from './Components/Project';
 import Publication from './Components/Publication';
 import Upcoming from './Components/Upcoming';
 import Footer from './Components/Footer';
-
+import { useSpring,animated } from 'react-spring';
 function App() {
+  const fade = useSpring({
+    from: {
+        opacity: 0.1,
+        transform: "opacity(0.1)"
+    },
+    to: {
+        opacity: 1,
+        transform: "opacity(1)"
+    },
+    config: { duration: 3000 }
+});
   return (
-    <div className="App">
+    <animated.div className="App" style={fade}>
       <Header/>
       <Home/>
       <About/>
@@ -19,7 +30,7 @@ function App() {
       <Project/>
       <Upcoming/>
       <Footer/>
-    </div>
+    </animated.div>
   );
 }
 

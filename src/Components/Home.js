@@ -1,8 +1,19 @@
-import React from 'react'
-
+import React from 'react';
+import { useSpring, animated } from "react-spring";
 export default function Home() {
+  const fade = useSpring({
+    from: {
+        opacity: 0.1,
+        transform: "opacity(0.1)"
+    },
+    to: {
+        opacity: 1,
+        transform: "opacity(1)"
+    },
+    config: { duration: 3000 }
+});
   return (
-    <div className='container pt-5 pb-5'>
+    <animated.div className='container pt-5 pb-5' style={fade}>
       <div className='row justify-content-center pt-5 pb-5'>
         <div className='text-center col-12 col-md-6'>
           <img src={"https://eccomerce-tazon.onrender.com/images/Undrawport.png"} alt="Home" className='image-home' />
@@ -34,6 +45,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </animated.div>
   )
 }
